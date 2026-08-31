@@ -1,0 +1,92 @@
+/* ─── Hero ────────────────────────────────────────────────────────── */
+.hero {
+  padding: 5rem 1.5rem 3rem;
+  background: var(--color-bg-alt);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  margin: 0 0 1.25rem;
+}
+
+.subtext {
+  max-width: 560px;
+}
+
+/* ─── Carousel ────────────────────────────────────────────────────── */
+.carouselSection {
+  background: var(--color-bg);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* ─── Share ───────────────────────────────────────────────────────── */
+.share {
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+}
+
+.shareInner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .shareInner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .shareDecor {
+    display: none;
+  }
+}
+
+.shareText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.shareHeading {
+  margin: 0;
+}
+
+.shareSubtext {
+  max-width: 520px;
+}
+
+.shareDecor {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.decorBox {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: var(--color-accent-light);
+}
+
+.decorBoxInner {
+  position: absolute;
+  inset: 24px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent);
+  opacity: 0.25;
+}

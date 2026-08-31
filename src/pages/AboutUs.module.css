@@ -1,0 +1,90 @@
+.hero {
+  padding: 5rem 1.5rem 3rem;
+  background: var(--color-bg-alt);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.heading {
+  margin: 0 0 1.25rem;
+}
+
+.subtext {
+  max-width: 540px;
+}
+
+.body {
+  background: var(--color-bg);
+}
+
+.placeholder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .placeholder {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.placeholderImage {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-warm);
+}
+
+.placeholderLines {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.line {
+  height: 20px;
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.comingSoon {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.comingSoonBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+}
+
+.comingSoonText {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 420px;
+  line-height: 1.75;
+}
