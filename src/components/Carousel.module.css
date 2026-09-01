@@ -75,7 +75,7 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: #fff;
-  background: rgba(61, 43, 31, 0.55);
+  background: rgba(74, 25, 66, 0.55);
   backdrop-filter: blur(6px);
   padding: 0.25rem 0.6rem;
   border-radius: 100px;
@@ -166,7 +166,7 @@
 .lightboxOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(20, 12, 8, 0.88);
+  background: rgba(20, 8, 18, 0.88);
   z-index: 200;
   display: flex;
   align-items: center;
@@ -195,7 +195,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(61, 43, 31, 0.6);
+  background: rgba(74, 25, 66, 0.6);
   backdrop-filter: blur(6px);
   color: #fff;
   display: flex;
@@ -207,7 +207,7 @@
 }
 
 .lightboxClose:hover {
-  background: rgba(61, 43, 31, 0.9);
+  background: rgba(74, 25, 66, 0.9);
 }
 
 .lightboxNav {
@@ -218,7 +218,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(253, 250, 246, 0.9);
+  background: rgba(255, 245, 248, 0.9);
   color: var(--color-text-primary);
   display: flex;
   align-items: center;

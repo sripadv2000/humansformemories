@@ -1,3 +1,4 @@
+/* ─── Hero ────────────────────────────────────────────────────────── */
 .hero {
   padding: 5rem 1.5rem 3rem;
   background: var(--color-bg-alt);
@@ -22,69 +23,134 @@
   max-width: 540px;
 }
 
-.body {
+/* ─── Shared eyebrow (story + team sections) ────────────────────── */
+.sectionEyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Our Story ────────────────────────────────────────────────────── */
+.story {
   background: var(--color-bg);
 }
 
-.placeholder {
+.storyGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
-  align-items: center;
+  grid-template-columns: 400px 1fr;
+  gap: 5rem;
+  align-items: start;
 }
 
-@media (max-width: 768px) {
-  .placeholder {
+@media (max-width: 900px) {
+  .storyGrid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 }
 
-.placeholderImage {
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md);
+.founderImg {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg);
   background: var(--color-bg-warm);
+  display: block;
 }
 
-.placeholderLines {
+.storyText {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
 }
 
-.line {
-  height: 20px;
-  background: var(--color-border);
-  border-radius: 4px;
+.storyHeading {
+  margin: 0;
 }
 
-.comingSoon {
+.storyPara {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+}
+
+/* ─── Team ─────────────────────────────────────────────────────────── */
+.team {
   background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 3rem;
-  text-align: center;
+}
+
+.teamHeader {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.teamHeading {
+  margin: 0;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.memberCard {
+  display: flex;
+  flex-direction: column;
   gap: 1.25rem;
 }
 
-.comingSoonBadge {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-accent);
-  background: var(--color-accent-light);
-  padding: 0.35rem 0.9rem;
-  border-radius: 100px;
+.memberPhotoWrap {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-warm);
 }
 
-.comingSoonText {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  max-width: 420px;
-  line-height: 1.75;
+.memberPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.memberInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.memberName {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.memberRole {
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  font-weight: 500;
 }

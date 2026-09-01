@@ -31,7 +31,7 @@
 
 .tagline {
   font-size: 0.875rem;
-  color: rgba(253, 250, 246, 0.6);
+  color: rgba(255, 245, 248, 0.6);
   line-height: 1.7;
   max-width: 240px;
 }
@@ -55,7 +55,7 @@
 .columnLink {
   display: block;
   font-size: 0.875rem;
-  color: rgba(253, 250, 246, 0.75);
+  color: rgba(255, 245, 248, 0.75);
   text-decoration: none;
   margin-bottom: 0.4rem;
   transition: color var(--transition);
@@ -67,16 +67,16 @@
 
 .columnText {
   font-size: 0.875rem;
-  color: rgba(253, 250, 246, 0.75);
+  color: rgba(255, 245, 248, 0.75);
   line-height: 1.7;
 }
 
 .bottom {
-  border-top: 1px solid rgba(253, 250, 246, 0.12);
+  border-top: 1px solid rgba(255, 245, 248, 0.12);
   padding: 1.5rem;
   text-align: center;
   font-size: 0.8rem;
-  color: rgba(253, 250, 246, 0.45);
+  color: rgba(255, 245, 248, 0.45);
 }
 
 @media (max-width: 768px) {

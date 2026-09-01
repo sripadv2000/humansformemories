@@ -150,7 +150,7 @@
   font-family: var(--font-heading);
   font-size: 1.35rem;
   font-style: italic;
-  color: rgba(253, 250, 246, 0.9);
+  color: rgba(255, 245, 248, 0.9);
   max-width: 520px;
   line-height: 1.5;
 }
