@@ -1,4 +1,15 @@
-/* ─── Hero ────────────────────────────────────────────────────────── */
+/* ─── Scroll fade animation ────────────────────────────────────────── */
+.fadeSection {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fadeSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Hero ─────────────────────────────────────────────────────────── */
 .hero {
   display: grid;
   grid-template-columns: 420px 1fr;
@@ -62,41 +73,394 @@
   line-height: 1.85;
 }
 
-/* ─── Signs Section ───────────────────────────────────────────────── */
-.signsSection {
+/* ─── Intro / What Is Dementia ─────────────────────────────────────── */
+.intro {
+  padding: 5rem 1.5rem;
   background: var(--color-bg);
 }
 
+.introInner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+  align-items: center;
+}
+
+.introHeading {
+  margin: 0;
+}
+
+.introText {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  max-width: 600px;
+}
+
+.statCallout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 3rem;
+  background: var(--color-bg-alt);
+  border: 1.5px solid var(--color-accent-light);
+  border-radius: var(--radius-lg);
+  margin-top: 0.5rem;
+}
+
+.statNumber {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.statCaption {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  max-width: 280px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ─── Shared section utilities ─────────────────────────────────────── */
 .sectionHeader {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
-.sectionTitle {
+.sectionHeading {
   margin: 0;
 }
 
-.grid {
+.sectionSubtext {
+  max-width: 600px;
+}
+
+/* ─── Causes ───────────────────────────────────────────────────────── */
+.causesSection {
+  background: var(--color-bg-alt);
+}
+
+.causesLead {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+}
+
+@media (max-width: 960px) {
+  .causesLead {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.causesLeadText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.causesLeadDesc {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.85;
+  max-width: 520px;
+}
+
+.causesImgWrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-warm);
+  aspect-ratio: 4 / 3;
+}
+
+@media (max-width: 960px) {
+  .causesImgWrap {
+    display: none;
+  }
+}
+
+.causesImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.causesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .causesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .causesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.causeCard {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.causeCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.causeIcon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.causeTitle {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.causeDesc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+/* ─── Timeline ─────────────────────────────────────────────────────── */
+.timelineSection {
+  background: var(--color-bg);
+}
+
+.timelineHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 4rem;
+  max-width: 560px;
+}
+
+.timelineSubtext {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* Desktop: horizontal track */
+.timelineTrack {
+  display: flex;
+  position: relative;
+  gap: 0;
+}
+
+/* Horizontal connector line (desktop) */
+.timelineTrack::before {
+  content: '';
+  position: absolute;
+  top: 28px; /* vertically centered on the dot */
+  left: calc(100% / 8);   /* start at center of first stage */
+  right: calc(100% / 8);  /* end at center of last stage */
+  height: 2px;
+  background: var(--color-accent-light);
+  z-index: 0;
+}
+
+/* Stage entry animations — triggered when parent gets .timelineVisible */
+.timelineStage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.5rem;
+  position: relative;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: var(--stage-delay, 0ms);
+}
+
+.timelineTrack.timelineVisible .timelineStage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stageDot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 0 0 6px var(--color-accent-light);
+}
+
+.stageDotNumber {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.stageBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.stageTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.stageDesc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Mobile: vertical timeline */
+@media (max-width: 768px) {
+  .timelineTrack {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 1rem;
+  }
+
+  .timelineTrack::before {
+    display: none;
+  }
+
+  .timelineStage {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 0 2.5rem 0;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  /* Vertical connector line */
+  .timelineStage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 27px; /* center of dot (56px / 2 = 28px, minus 1px) */
+    top: 56px;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-accent-light);
+    z-index: 0;
+  }
+
+  .stageDot {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .stageBody {
+    padding-top: 0.9rem;
+  }
+}
+
+/* ─── Risk Factors ─────────────────────────────────────────────────── */
+.risksSection {
+  background: var(--color-bg-alt);
+}
+
+.risksHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+}
+
+.risksSubtext {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.riskPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.riskPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  transition: border-color var(--transition), background-color var(--transition), color var(--transition);
+}
+
+.riskPill:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+  color: var(--color-accent-dark);
+}
+
+/* ─── Early Warning Signs ──────────────────────────────────────────── */
+.warningSection {
+  background: var(--color-bg);
+}
+
+.signsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
 @media (max-width: 900px) {
-  .grid {
+  .signsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 580px) {
-  .grid {
+  .signsGrid {
     grid-template-columns: 1fr;
   }
 }
 
-.card {
+.signCard {
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -107,30 +471,222 @@
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.card:hover {
+.signCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
 
-.cardIcon {
+.signIcon {
   font-size: 1.75rem;
   line-height: 1;
 }
 
-.cardTitle {
+.signTitle {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-text-primary);
 }
 
-.cardDesc {
+.signDesc {
   font-size: 0.9rem;
   color: var(--color-text-secondary);
   line-height: 1.75;
 }
 
-/* ─── CTA ─────────────────────────────────────────────────────────── */
+/* ─── Lifestyle / Accordion ────────────────────────────────────────── */
+.lifestyleSection {
+  background: var(--color-bg-alt);
+}
+
+.lifestyleGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .lifestyleGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.lifestyleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lifestyleImgWrap {
+  position: sticky;
+  top: 100px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-warm);
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 1024px) {
+  .lifestyleImgWrap {
+    display: none;
+  }
+}
+
+.lifestyleImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Accordion */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordionItem:last-child {
+  border-bottom: none;
+}
+
+.accordionTrigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transition);
+}
+
+.accordionTrigger:hover {
+  background: var(--color-bg-alt);
+}
+
+.accordionItemOpen .accordionTrigger {
+  background: var(--color-bg-alt);
+}
+
+.accordionTriggerLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.accordionIcon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.accordionTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.accordionTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.accordionTeaser {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.accordionChevron {
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  display: inline-block;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+/* Smooth expand using grid-template-rows trick */
+.accordionBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s ease;
+}
+
+.accordionBodyOpen {
+  grid-template-rows: 1fr;
+}
+
+.accordionInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.accordionPad {
+  padding: 0.25rem 1.5rem 1.5rem 3.9rem; /* align with title text */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.accordionDesc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.accordionList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.accordionList li {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.accordionList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ─── CTA ──────────────────────────────────────────────────────────── */
 .cta {
   background: var(--color-bg-dark);
   padding: 4rem 1.5rem;
