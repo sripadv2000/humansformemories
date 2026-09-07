@@ -61,8 +61,8 @@ export default function SupportOurCause() {
               </p>
               <div className={styles.contactDetail}>
                 <span className={styles.contactLabel}>Email</span>
-                <a href="mailto:aadithmaganti@gmail.com" className={styles.contactValue}>
-                  aadithmaganti@gmail.com
+                <a href="mailto:Humansformemories@gmail.com" className={styles.contactValue}>
+                  Humansformemories@gmail.com
                 </a>
               </div>
               <div className={styles.contactDetail}>

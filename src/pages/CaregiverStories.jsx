@@ -76,7 +76,7 @@ export default function CaregiverStories() {
                 Your journey is a vital part of our collective memory. By sharing your experiences, you help us build a supportive network of caregivers and patients, ensuring that no one walks this path alone.
               </p>
               <a
-                href="mailto:aadithmaganti@gmail.com?subject=My Caregiver Story"
+                href="mailto:Humansformemories@gmail.com?subject=My Caregiver Story"
                 className="btn-primary"
               >
                 Submit Story
