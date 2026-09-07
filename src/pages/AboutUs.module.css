@@ -1,11 +1,17 @@
-/* ─── Hero ────────────────────────────────────────────────────────── */
-.hero {
-  padding: 5rem 1.5rem 3rem;
-  background: var(--color-bg-alt);
+/* ─── Mission ─────────────────────────────────────────────────────── */
+.mission {
+  background: var(--color-bg);
+  padding-top: 8rem;
+}
+
+.missionColumn {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .eyebrow {
   display: block;
+  text-align: center;
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 600;
@@ -15,15 +21,38 @@
   margin-bottom: 1rem;
 }
 
-.heading {
-  margin: 0 0 1.25rem;
+.missionHeading {
+  text-align: center;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  margin: 0 0 3rem;
 }
 
-.subtext {
-  max-width: 540px;
+.missionPara {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--color-text-secondary);
+  margin: 0 0 1.5rem;
 }
 
-/* ─── Shared eyebrow (story + team sections) ────────────────────── */
+.missionPara:last-of-type {
+  margin-bottom: 0;
+}
+
+.tagline {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  color: var(--color-accent-dark);
+  max-width: 620px;
+  line-height: 1.6;
+  margin: 4rem auto 0;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ─── Shared eyebrow (team section) ─────────────────────────────── */
 .sectionEyebrow {
   display: block;
   font-family: var(--font-heading);
@@ -35,52 +64,6 @@
   margin-bottom: 0.75rem;
 }
 
-/* ─── Our Story ────────────────────────────────────────────────────── */
-.story {
-  background: var(--color-bg);
-}
-
-.storyGrid {
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .storyGrid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-}
-
-.founderImg {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-warm);
-  display: block;
-}
-
-.storyText {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-top: 0.5rem;
-}
-
-.storyHeading {
-  margin: 0;
-}
-
-.storyPara {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  line-height: 1.9;
-}
-
 /* ─── Team ─────────────────────────────────────────────────────────── */
 .team {
   background: var(--color-bg-alt);
@@ -89,36 +72,39 @@
 .teamHeader {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
+  text-align: center;
 }
 
 .teamHeading {
   margin: 0;
 }
 
-.teamGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-@media (max-width: 900px) {
-  .teamGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 580px) {
-  .teamGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.memberCard {
+.teamList {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 2rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.memberTile {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.memberTile:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
 }
 
 .memberPhotoWrap {
@@ -139,18 +125,43 @@
 .memberInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
 }
 
 .memberName {
   font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: var(--color-text-primary);
+  margin: 0;
 }
 
 .memberRole {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-accent);
-  font-weight: 500;
+  margin: 0;
+}
+
+.memberDescription {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0.25rem 0 0;
+}
+
+@media (max-width: 768px) {
+  .memberTile {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .memberPhotoWrap {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .memberInfo {
+    align-items: center;
+  }
 }

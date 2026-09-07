@@ -1,4 +1,9 @@
 /* ─── Hero ────────────────────────────────────────────────────────── */
+/*
+ * Compact header — same flat-background convention used on the other
+ * pages' heroes (AboutUs, SupportOurCause): just enough padding for the
+ * three lines of text, no full-viewport stretch, no decorative panel.
+ */
 .hero {
   padding: 5rem 1.5rem 3rem;
   background: var(--color-bg-alt);
@@ -30,63 +35,86 @@
   padding-bottom: 4rem;
 }
 
-/* ─── Share ───────────────────────────────────────────────────────── */
+/* ─── Share Your Story CTA ───────────────────────────────────────── */
+/*
+ * Full-bleed gradient panel (rose brand tones), visually closing out the
+ * page — distinct from the plain background used elsewhere.
+ */
 .share {
-  background: var(--color-bg-alt);
-  border-top: 1px solid var(--color-border);
+  background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+  padding: 5.5rem 1.5rem;
 }
 
 .shareInner {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4rem;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .shareInner {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .shareDecor {
-    display: none;
-  }
-}
-
-.shareText {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
+  align-items: center;
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.shareEyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 245, 248, 0.85);
+  margin-bottom: 1rem;
 }
 
 .shareHeading {
-  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 1.25rem;
 }
 
 .shareSubtext {
-  max-width: 520px;
+  font-size: 1.05rem;
+  color: rgba(255, 245, 248, 0.9);
+  line-height: 1.75;
+  margin-bottom: 2rem;
 }
 
-.shareDecor {
-  position: relative;
-  width: 240px;
-  height: 240px;
-  flex-shrink: 0;
+/*
+ * Ancestor-qualified selectors (.shareInner .shareBtn, not just .shareBtn)
+ * so these overrides have strictly higher specificity than the global
+ * .btn-primary / .btn-primary:hover rules and win unconditionally — not
+ * by hoping this module's stylesheet happens to load after index.css.
+ * Equal-specificity ties broke the wrong way at runtime: the resting
+ * button rendered in --color-accent (blending into this section's own
+ * accent gradient) and on hover the background came from one rule while
+ * the text color came from another, landing on the same rose value for
+ * both — invisible text. Text color is pinned to --color-accent-dark in
+ * both rules below; only the background shifts on hover.
+ */
+.shareInner .shareBtn {
+  background-color: #fff;
+  color: var(--color-accent-dark);
 }
 
-.decorBox {
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  background: var(--color-accent-light);
+.shareInner .shareBtn:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-accent-dark);
 }
 
-.decorBoxInner {
-  position: absolute;
-  inset: 24px;
-  border-radius: var(--radius-md);
-  background: var(--color-accent);
-  opacity: 0.25;
+/*
+ * Same width/offset as the site's other :focus-visible ring
+ * (Navbar's .socialLink), but white instead of --color-accent — an
+ * accent-colored ring would sit low-contrast against this section's
+ * own accent-rose gradient background.
+ */
+.shareInner .shareBtn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.shareReassurance {
+  font-size: 0.9rem;
+  color: rgba(255, 245, 248, 0.75);
+  margin-top: 1.25rem;
 }

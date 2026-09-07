@@ -72,25 +72,34 @@
   background-color: var(--color-accent-light) !important;
 }
 
-.igLink {
+/* ─── Social icons ────────────────────────────────────────────────── */
+.socialLinks {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--color-accent-dark);
-  padding: 0.4rem 0.85rem;
-  border: 1.5px solid var(--color-accent);
-  border-radius: var(--radius-xl);
-  margin-left: 0.6rem;
-  transition: background-color var(--transition), color var(--transition);
-  white-space: nowrap;
+  gap: 0.15rem;
+  margin-left: 0.5rem;
   flex-shrink: 0;
 }
 
-.igLink:hover {
-  background-color: var(--color-accent);
-  color: var(--color-text-light);
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-accent-dark);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.socialLink:hover {
+  color: var(--color-accent);
+  background-color: var(--color-bg-alt);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* ─── Hamburger ──────────────────────────────────────────────────── */
@@ -149,10 +158,12 @@
     padding: 0.65rem 1rem;
   }
 
-  .igLink {
+  /* Icons stay in a row inside the mobile drawer, not stacked as menu rows. */
+  .socialLinks {
     align-self: flex-start;
     margin-left: 0;
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    padding-left: 0.5rem;
+    gap: 0.35rem;
   }
 }

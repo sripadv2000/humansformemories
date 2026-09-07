@@ -1,97 +1,163 @@
-/* ─── Hero ────────────────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  height: calc(100vh - 72px);
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+/* ─── Backdrop ──────────────────────────────────────────────────────── */
+/*
+ * Fixed image behind the page, positioned below the 72px navbar so the
+ * photo never sits under the nav. Only mounted while Home is rendered;
+ * dismounts automatically on navigation to other routes.
+ */
+.backdrop {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
 }
 
-.heroBg {
-  position: absolute;
-  inset: 0;
+.backdrop img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.heroOverlay {
+/* ─── Page wrapper ──────────────────────────────────────────────────── */
+/*
+ * position + z-index create a single stacking context that lifts every
+ * section above the backdrop. Transparent areas (hero) show through to
+ * the root stacking context, where the backdrop sits at z-index: 0.
+ */
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────── */
+/*
+ * Transparent tile — exactly fills the viewport area below the 72px nav.
+ * Scrolls with the page like any other section; the backdrop below it
+ * never moves, producing the locked-photo illusion.
+ */
+.hero {
+  position: relative;
+  height: calc(100vh - 72px);
+  min-height: 560px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+/*
+ * Force the global .container to fill the flex line — without this it
+ * shrinks to fit its content and drifts toward the viewport center.
+ * The container's own max-width still caps at 1200px.
+ */
+.hero > :global(.container) {
+  width: 100%;
+}
+
+/*
+ * White wash confined to the left of the tile. Stronger than the ~15%
+ * target because the photo's left region contains near-black hair and
+ * dark clothing — verification showed dark charcoal text failed WCAG AA
+ * (min contrast 1.07 at 390px) against those pixels without lift.
+ * Wash fades to zero by ~55%, so the right side of the photo reads full.
+ */
+.hero::before {
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(20, 5, 18, 0.45) 0%,
-    rgba(20, 5, 18, 0.62) 100%
+    to right,
+    rgba(255, 245, 248, 0.78) 0%,
+    rgba(255, 245, 248, 0.70) 32%,
+    rgba(255, 245, 248, 0.48) 48%,
+    rgba(255, 245, 248, 0.14) 62%,
+    rgba(255, 245, 248, 0) 72%
   );
+  pointer-events: none;
 }
 
+@media (max-width: 640px) {
+  /*
+   * At 390-ish px the text spans nearly the full viewport, so a
+   * left-third-only wash cannot lift enough pixels. Extend the wash to
+   * cover the text zone while still fading toward the right so the
+   * photo remains partly visible on the right edge.
+   */
+  .hero::before {
+    background: linear-gradient(
+      to right,
+      rgba(255, 245, 248, 0.80) 0%,
+      rgba(255, 245, 248, 0.74) 55%,
+      rgba(255, 245, 248, 0.55) 82%,
+      rgba(255, 245, 248, 0.20) 100%
+    );
+  }
+}
+
+/*
+ * z-index: 1 within .page's stacking context ensures the text paints
+ * above the hero::before scrim (which is z-index: auto in .page's context).
+ */
 .heroContent {
   position: relative;
   z-index: 1;
-  text-align: center;
-  padding: 0 1.5rem;
-  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 640px;
+}
+
+.heroHeading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.heroIntro {
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  line-height: 1.65;
+  max-width: 480px;
 }
 
 .heroQuote {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  font-size: 1.1rem;
   font-style: italic;
   font-weight: 400;
-  color: #fff;
-  line-height: 1.45;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* ─── Intro ───────────────────────────────────────────────────────── */
-.intro {
-  padding: 6rem 1.5rem;
-}
-
-.introGrid {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4rem;
-  align-items: center;
-}
-
-.introText {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  max-width: 600px;
-}
-
-.introHeading {
+  color: var(--color-text-primary);
+  line-height: 1.55;
   margin: 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-accent);
+  max-width: 500px;
 }
 
-.introDecor {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  flex-shrink: 0;
-}
-
-.decorCircle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: var(--color-accent-light);
-  opacity: 0.6;
-}
-
-@media (max-width: 768px) {
-  .introGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+@media (max-width: 640px) {
+  .hero {
+    min-height: 0;
   }
 
-  .introDecor {
-    display: none;
+  .heroContent {
+    gap: 1.1rem;
+  }
+
+  .heroHeading {
+    font-size: clamp(1.7rem, 7.2vw, 2.3rem);
+  }
+
+  .heroIntro {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .heroQuote {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 }
 
@@ -127,35 +193,6 @@
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
-}
-
-/* ─── Mission ─────────────────────────────────────────────────────── */
-.mission {
-  background: var(--color-bg-alt);
-}
-
-.missionInner {
-  max-width: 760px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.missionEyebrow {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-.missionText {
-  font-size: 1.15rem;
-  color: var(--color-text-secondary);
-  line-height: 1.85;
 }
 
 /* ─── Cards ───────────────────────────────────────────────────────── */
