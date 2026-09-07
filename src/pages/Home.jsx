@@ -44,7 +44,7 @@ export default function Home() {
                 Preserving the<br />Legacy of Memory
               </h1>
               <p className={styles.heroIntro}>
-                Humans for Memories bridges early Dementia detection with compassionate care. Through patient narratives and community action, we stand with every family navigating memory loss, so no one walks this path alone.
+                Our mission is to highlight caregivers’ voices through personal stories, bringing visibility to their lived experiences and gaps in dementia care, policy, and community support.
               </p>
               <blockquote className={styles.heroQuote}>
                 "We believe that every memory is a story worth telling and every person is a legacy worth honoring."

@@ -18,8 +18,8 @@ export default function Footer() {
         <div className={styles.columns}>
           <div className={styles.column}>
             <h4 className={styles.columnTitle}>Get in Touch</h4>
-            <a href="mailto:Humansformemories@gmail.com" className={styles.columnLink}>
-              Humansformemories@gmail.com
+            <a href="mailto:humansformemories@gmail.com" className={styles.columnLink}>
+              humansformemories@gmail.com
             </a>
             <a href="tel:+17745787853" className={styles.columnLink}>
               +1 (774) 578-7853
