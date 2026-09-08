@@ -22,18 +22,18 @@ const team = [
       "Leading our mission to bring caregivers' stories and experiences into conversations about dementia care.",
   },
   {
-    photo: teamHavish,
-    name: 'Havish Thotakura',
-    role: 'Vice President, Co-Founder',
-    description:
-      'Championing the voices of caregivers and families to help drive greater awareness and support within the dementia care community.',
-  },
-  {
     photo: teamArin,
     name: 'Arin Shinde',
     role: 'Vice President, Co-Founder',
     description:
       'Working to connect caregiver stories with the resources, conversations, and communities that can help families feel less alone.',
+  },
+  {
+    photo: teamHavish,
+    name: 'Havish Thotakura',
+    role: 'Vice President, Co-Founder',
+    description:
+      'Championing the voices of caregivers and families to help drive greater awareness and support within the dementia care community.',
   },
 ]
 
