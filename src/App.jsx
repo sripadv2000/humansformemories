@@ -12,10 +12,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="about-us" element={<AboutUs />} />
           <Route path="alzheimers-signs-and-symptoms" element={<AlzheimersSignsAndSymptoms />} />
           <Route path="caregiver-stories" element={<CaregiverStories />} />
           <Route path="support-our-cause" element={<SupportOurCause />} />
-          <Route path="about-us" element={<AboutUs />} />
         </Route>
       </Routes>
     </BrowserRouter>

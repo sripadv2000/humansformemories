@@ -29,10 +29,10 @@ const IconMail = () => (
 
 const navLinks = [
   { to: '/',                              label: 'Home' },
+  { to: '/about-us',                      label: 'About Us' },
   { to: '/alzheimers-signs-and-symptoms', label: 'Dementia Signs and Symptoms' },
   { to: '/caregiver-stories',             label: 'Caregiver Stories' },
   { to: '/support-our-cause',             label: 'Support Our Cause' },
-  { to: '/about-us',                      label: 'About Us' },
 ]
 
 export default function Navbar() {
